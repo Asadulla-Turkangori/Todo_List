@@ -1,0 +1,35 @@
+
+<section>
+    <div class="add-div">
+        <input #todoInput type="text" placeholder="Add your new todo">
+        <button (click)="post(todoInput.value)" mat-icon-button class="c-btn">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+
+    <ul *ngFor="let todo of todos$ | async">
+        <li>
+            <span class="rad-list" *ngIf="todo.active == true">
+                <input type="checkbox" id="check" checked (click)="check(todo.id,false)" >
+                {{todo.description}}
+            </span>
+            <span class="rad-list" *ngIf="todo.active == false" >
+                    <input type="checkbox" id="check" (click)="check(todo.id,true)" >
+                    {{todo.description}}
+            </span>
+
+            <span style="float: right;">
+                <button (click)="update(todo.id,todoInput.value)" mat-icon-button >
+                    <mat-icon >edit</mat-icon>
+                </button>
+                <button (click)="delete(todo.id)" mat-icon-button>
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </span>
+        </li>
+    </ul>
+</section>
+
+
+
+
